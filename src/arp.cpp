@@ -99,13 +99,7 @@ std::array<uint8_t, 60> buildARPRequest(
 {
     std::array<uint8_t, 60> packet{};           // Ethernet-Frame
 
-    // getting own MAC and IP
-    std::string ifname = getDefaultInterface();
-    if (ifname.empty()){
-        std::__throw_runtime_error("No network interface found!");
-    }
-    std::array<uint8_t, 6> ownMac = getMacAddress(ifname.c_str());
-    std::array<uint8_t, 4> ownIp = getIpAddress(ifname.c_str());
+    
 
     // - - - - -
 
@@ -117,7 +111,7 @@ std::array<uint8_t, 60> buildARPRequest(
 
     // Source MAC
     for (int i = 0; i < 6; i++){
-        packet[6+i] = ownMac[i];
+        packet[6+i] = senderMAC[i];
     }
 
     // Ethertype 0x0806 for ARP according to IEEE
@@ -146,12 +140,12 @@ std::array<uint8_t, 60> buildARPRequest(
 
     // Source MAC
     for (int i = 0; i < 6; i++){
-        packet[22 + i] = ownMac[i];
+        packet[22 + i] = senderMAC[i];
     }
 
     // Source IP
     for (int i = 0; i < 4; i++){
-        packet[28 + i] = ownIp[i];
+        packet[28 + i] = senderIP[i];
     }
 
     // Target MAC in ARP Request 00:00:00:00:00:00
@@ -170,4 +164,23 @@ std::array<uint8_t, 60> buildARPRequest(
     }
 
     return packet;
+}
+
+std::string actuallySendingTheARPRequest(){
+    std::string ifname = getDefaultInterface();
+    if (ifname.empty()){
+        std::__throw_runtime_error("No network interface found!");
+    }
+    std::array<uint8_t, 6> ownMac = getMacAddress(ifname.c_str());
+    std::array<uint8_t, 4> ownIp = getIpAddress(ifname.c_str());
+
+    // Assuming target subnet is the same as own IP subnet and 255.255.255.0
+    std::array<uint8_t, 4> targetIp = ownIp;
+
+    for (int i = 0; i < 256; i++){
+        targetIp[3] = i; // Targeting .0 to .255 addresses
+        buildARPRequest(ownMac.data(), ownIp.data(), targetIp.data());
+    }
+
+    return "Super";
 }
