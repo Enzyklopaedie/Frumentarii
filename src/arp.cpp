@@ -3,42 +3,11 @@
 #include <ifaddrs.h>
 #include <cstring>
 #include <sys/ioctl.h>
+#include <arpa/inet.h>
 #include <net/if.h>
 #include <unistd.h>
 #include <netinet/ether.h>
-
-/*
-std::array<uint8_t, 42> buildARPRequest(
-    const uint8_t senderMAC[6], 
-    const uint8_t senderIP[4], 
-    const uint8_t targetIP[4])
-{
-    std::array<uint8_t, 42> packet{};
-    
-    // --- Ethernet Header ---
-    for(int i=0;i<6;i++) packet[i] = 0xFF;          // Broadcast Ziel-MAC
-    for(int i=0;i<6;i++) packet[6+i] = senderMAC[i]; // Sender-MAC
-    packet[12] = 0x08;  // EtherType 0x0806
-    packet[13] = 0x06;
-
-    // --- ARP Header ---
-    packet[14] = 0x00; packet[15] = 0x01;          // HardwareType Ethernet
-    packet[16] = 0x08; packet[17] = 0x00;          // ProtocolType IPv4
-    packet[18] = 6;  // HardwareSize
-    packet[19] = 4;  // ProtocolSize
-    packet[20] = 0x00; packet[21] = 0x01;          // Opcode = request
-
-    // Sender MAC
-    for(int i=0;i<6;i++) packet[22+i] = senderMAC[i];
-    // Sender IP
-    for(int i=0;i<4;i++) packet[28+i] = senderIP[i];
-    // Target MAC (0 für Request)
-    for(int i=0;i<6;i++) packet[32+i] = 0x00;
-    // Target IP
-    for(int i=0;i<4;i++) packet[38+i] = targetIP[i];
-
-    return packet;
-}*/
+#include <stdexcept>
 
 std::string getDefaultInterface(){
     struct ifaddrs *ifaddr, *ifa;
@@ -78,22 +47,127 @@ std::array<uint8_t, 6> getMacAddress(const char* ifname){
     };
 }
 
+std::array<uint8_t, 4> getIpAddress(const char* ifname) {
+    struct ifaddrs *ifaddr, *ifa;
+    std::string ipAddress;
 
-std::array<uint8_t, 42> buildARPRequest(
+    if (getifaddrs(&ifaddr) == -1) {
+        perror("getifaddrs");
+        throw std::runtime_error("Failed to get network interfaces");
+    }
+
+    for (ifa = ifaddr; ifa != nullptr; ifa = ifa->ifa_next) {
+        if (ifa->ifa_addr == nullptr) continue;
+
+        // Check if this is the interface we want and if it's IPv4
+        if (strcmp(ifa->ifa_name, ifname) == 0 && ifa->ifa_addr->sa_family == AF_INET) {
+            void* addr = &((struct sockaddr_in*)ifa->ifa_addr)->sin_addr;
+            char ip[INET_ADDRSTRLEN];
+            inet_ntop(AF_INET, addr, ip, INET_ADDRSTRLEN);
+            ipAddress = ip;
+            break;
+        }
+    }
+
+    freeifaddrs(ifaddr);
+
+    if (ipAddress.empty()) {
+        throw std::runtime_error("No IPv4 address found for interface");
+    }
+
+    std::array<uint8_t, 4>resultIpAddress = {};
+
+    // Convert IP-String ("192.168.1.1") to uint8_t[4]-Array
+    struct in_addr ipAddr;
+    if (inet_pton(AF_INET, ipAddress.c_str(), &ipAddr) != 1) {
+        throw std::runtime_error("Failed to convert IP address");
+    }
+
+    // Copy 4 Bytes of IP-Adresse to Result-Array
+    const uint8_t* ipBytes = reinterpret_cast<const uint8_t*>(&ipAddr.s_addr);
+    for (int i = 0; i < 4; i++) {
+        resultIpAddress[i] = ipBytes[i];
+    }
+
+    return resultIpAddress;
+}
+
+std::array<uint8_t, 60> buildARPRequest(
     const uint8_t senderMAC[6], 
     const uint8_t senderIP[4], 
     const uint8_t targetIP[4])
 {
-    std::array<uint8_t, 42> packet{};
+    std::array<uint8_t, 60> packet{};           // Ethernet-Frame
 
-    // Ethernet-Frame Overhead
+    // getting own MAC and IP
+    std::string ifname = getDefaultInterface();
+    if (ifname.empty()){
+        std::__throw_runtime_error("No network interface found!");
+    }
+    std::array<uint8_t, 6> ownMac = getMacAddress(ifname.c_str());
+    std::array<uint8_t, 4> ownIp = getIpAddress(ifname.c_str());
+
+    // - - - - -
+
+    // Ethernet-Frame Start
+    // Target MAC (Broadcast -> FF:FF:FF:FF:FF:FF)
     for (int i = 0; i < 6; i++){
         packet[i] = 0xFF;
     }
 
-    std::string interfaceName = getDefaultInterface();
-    
+    // Source MAC
+    for (int i = 0; i < 6; i++){
+        packet[6+i] = ownMac[i];
+    }
 
-    std::array<uint8_t, 6> ownMac = getMacAddress();
+    // Ethertype 0x0806 for ARP according to IEEE
+    packet[12] = 0x08;
+    packet[13] = 0x06;
 
+
+    // ----- DATA -----
+    // Hardware Type
+    packet[14] = 0x00;
+    packet[15] = 0x01;
+
+    // Protocol Type
+    packet[16] = 0x08;
+    packet[17] = 0x00;
+
+    // Address Size
+    packet[18] = 6;
+
+    // Protocol Size
+    packet[19] = 4;
+
+    // Operation
+    packet[20] = 0x00;
+    packet[21] = 0x01;
+
+    // Source MAC
+    for (int i = 0; i < 6; i++){
+        packet[22 + i] = ownMac[i];
+    }
+
+    // Source IP
+    for (int i = 0; i < 4; i++){
+        packet[28 + i] = ownIp[i];
+    }
+
+    // Target MAC in ARP Request 00:00:00:00:00:00
+    for (int i = 0; i < 6; i++){
+        packet[32 + i] = 0x00;
+    }
+
+    // Target IP
+    for (int i = 0; i < 4; i++){
+        packet[38 + i] = targetIP[i];
+    }
+
+    // Meet minimum requirements for Ethernet Payload
+    for (int i = 0; i < 18; i++){
+        packet[42 + i] = 0x00;
+    }
+
+    return packet;
 }
