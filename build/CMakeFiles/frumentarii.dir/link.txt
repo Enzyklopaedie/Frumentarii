@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/frumentarii.dir/link.d CMakeFiles/frumentarii.dir/src/main.cpp.o CMakeFiles/frumentarii.dir/src/arp.cpp.o CMakeFiles/frumentarii.dir/src/network.cpp.o -o frumentarii

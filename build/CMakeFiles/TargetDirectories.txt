@@ -1,0 +1,3 @@
+/home/dev/Desktop/C/Fing_App_Clone/Frumentarii/build/CMakeFiles/frumentarii.dir
+/home/dev/Desktop/C/Fing_App_Clone/Frumentarii/build/CMakeFiles/edit_cache.dir
+/home/dev/Desktop/C/Fing_App_Clone/Frumentarii/build/CMakeFiles/rebuild_cache.dir
