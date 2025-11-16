@@ -8,6 +8,9 @@
 #include <unistd.h>
 #include <netinet/ether.h>
 #include <stdexcept>
+#include <sys/socket.h>
+#include <netpacket/packet.h>
+#include <iostream>
 
 std::string getDefaultInterface(){
     struct ifaddrs *ifaddr, *ifa;
@@ -179,8 +182,29 @@ std::string actuallySendingTheARPRequest(){
 
     for (int i = 0; i < 256; i++){
         targetIp[3] = i; // Targeting .0 to .255 addresses
-        buildARPRequest(ownMac.data(), ownIp.data(), targetIp.data());
+        std::array<uint8_t, 60> arpRequest = buildARPRequest(ownMac.data(), ownIp.data(), targetIp.data());
+        
+        int rawSocket = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP));
+        struct ifreq ifr;
+        strncpy(ifr.ifr_name, ifname.c_str(), IFNAMSIZ);
+        ioctl(rawSocket, SIOCGIFINDEX, &ifr);
+
+        struct sockaddr_ll addr = {};
+        addr.sll_ifindex = ifr.ifr_ifindex;
+        addr.sll_halen = 6;
+        memset(addr.sll_addr, 0xff, 6); // Broadcast MAC
+
+        auto packet = buildARPRequest(ownMac.data(), ownIp.data(), targetIp.data());
+
+        sendto(rawSocket, packet.data(), packet.size(), 0, 
+            (struct sockaddr*)&addr, sizeof(addr));
     }
+
+    
+    
+
+
+
 
     return "Super";
 }

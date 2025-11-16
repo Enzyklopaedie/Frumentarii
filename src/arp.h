@@ -20,7 +20,7 @@ struct ArpHeader {
     std::array<uint8_t, 4> targetIp;    // IP-Address of Target
 };
 
-std::array<uint8_t, 42> buildArpRequest(
+std::array<uint8_t, 60> buildArpRequest(
     const std::array<uint8_t, 6>& srcMac,
     const std::array<uint8_t, 4>& srcIp,
     const std::array<uint8_t, 4>& targetIp

@@ -209,6 +209,7 @@ CMakeFiles/frumentarii.dir/src/main.cpp.o: /home/dev/Desktop/C/Fing_App_Clone/Fr
 CMakeFiles/frumentarii.dir/src/network.cpp.o: /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/network.cpp \
   /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/network.h \
   /usr/include/alloca.h \
+  /usr/include/arpa/inet.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -316,16 +317,20 @@ CMakeFiles/frumentarii.dir/src/network.cpp.o: /home/dev/Desktop/C/Fing_App_Clone
   /usr/include/features.h \
   /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/if_ether.h \
   /usr/include/linux/posix_types.h \
   /usr/include/linux/sched/types.h \
   /usr/include/linux/stddef.h \
   /usr/include/linux/types.h \
   /usr/include/locale.h \
+  /usr/include/net/ethernet.h \
   /usr/include/net/if.h \
+  /usr/include/netinet/in.h \
   /usr/include/netpacket/packet.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
+  /usr/include/stdint.h \
   /usr/include/stdio.h \
   /usr/include/stdlib.h \
   /usr/include/string.h \
@@ -353,6 +358,7 @@ CMakeFiles/frumentarii.dir/src/network.cpp.o: /home/dev/Desktop/C/Fing_App_Clone
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/in.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
@@ -367,6 +373,8 @@ CMakeFiles/frumentarii.dir/src/network.cpp.o: /home/dev/Desktop/C/Fing_App_Clone
   /usr/include/x86_64-linux-gnu/bits/socket.h \
   /usr/include/x86_64-linux-gnu/bits/socket_type.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
@@ -430,7 +438,8 @@ CMakeFiles/frumentarii.dir/src/network.cpp.o: /home/dev/Desktop/C/Fing_App_Clone
   /usr/include/x86_64-linux-gnu/sys/socket.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
   /usr/lib/gcc/x86_64-linux-gnu/15/include/stdarg.h \
-  /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h
+  /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h \
+  /usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h
 
 frumentarii: /lib/x86_64-linux-gnu/libc.so.6 \
   /lib/x86_64-linux-gnu/libm.so.6 \
@@ -469,6 +478,8 @@ frumentarii: /lib/x86_64-linux-gnu/libc.so.6 \
 
 /lib/x86_64-linux-gnu/libmvec.so.1:
 
+/usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h:
+
 /usr/include/x86_64-linux-gnu/sys/socket.h:
 
 /usr/lib/x86_64-linux-gnu/libc_nonshared.a:
@@ -479,7 +490,7 @@ frumentarii: /lib/x86_64-linux-gnu/libc.so.6 \
 
 /usr/include/x86_64-linux-gnu/bits/socket_type.h:
 
-/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+/usr/include/x86_64-linux-gnu/bits/in.h:
 
 /usr/include/x86_64-linux-gnu/bits/getopt_core.h:
 
@@ -491,6 +502,10 @@ frumentarii: /lib/x86_64-linux-gnu/libc.so.6 \
 
 /usr/include/net/if.h:
 
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/net/ethernet.h:
+
 /usr/include/c++/15/cstring:
 
 /usr/include/asm-generic/sockios.h:
@@ -498,6 +513,8 @@ frumentarii: /lib/x86_64-linux-gnu/libc.so.6 \
 /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/network.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/15/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
 /usr/include/unistd.h:
 
@@ -539,6 +556,8 @@ frumentarii: /lib/x86_64-linux-gnu/libc.so.6 \
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
+/usr/include/x86_64-linux-gnu/bits/stdint-least.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
@@ -552,6 +571,8 @@ frumentarii: /lib/x86_64-linux-gnu/libc.so.6 \
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/netinet/in.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
@@ -639,6 +660,8 @@ frumentarii: /lib/x86_64-linux-gnu/libc.so.6 \
 
 /usr/include/c++/15/bits/ostream.h:
 
+/usr/include/arpa/inet.h:
+
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
 /usr/include/c++/15/bits/basic_string.tcc:
@@ -672,6 +695,8 @@ frumentarii: /lib/x86_64-linux-gnu/libc.so.6 \
 /usr/include/c++/15/bits/cxxabi_forced.h:
 
 /usr/include/c++/15/tuple:
+
+/usr/include/linux/if_ether.h:
 
 /usr/include/c++/15/bits/memoryfwd.h:
 
@@ -764,6 +789,8 @@ frumentarii: /lib/x86_64-linux-gnu/libc.so.6 \
 /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/main.cpp:
 
 CMakeFiles/frumentarii.dir/src/network.cpp.o:
+
+/usr/include/stdint.h:
 
 /usr/include/c++/15/bits/basic_ios.h:
 
