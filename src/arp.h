@@ -1,6 +1,15 @@
 #pragma once
 #include <cstdint>
 #include <array>
+#include <vector>
+#include <string>
+
+struct InterfaceInfo{
+    std::string name;
+    std::vector<std::string> ipv4_addresses;
+    std::vector<std::string> ipv6_addresses;
+    std::array<uint8_t, 6> mac;
+};
 
 struct EthernetHeader {
     std::array<uint8_t, 6> destMAC;   // Destination-MAC
