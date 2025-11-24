@@ -76,43 +76,43 @@ CMakeFiles/frumentarii.dir/src/main.cpp.o: CMakeFiles/frumentarii.dir/flags.make
 CMakeFiles/frumentarii.dir/src/main.cpp.o: /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/main.cpp
 CMakeFiles/frumentarii.dir/src/main.cpp.o: CMakeFiles/frumentarii.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dev/Desktop/C/Fing_App_Clone/Frumentarii/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/frumentarii.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/frumentarii.dir/src/main.cpp.o -MF CMakeFiles/frumentarii.dir/src/main.cpp.o.d -o CMakeFiles/frumentarii.dir/src/main.cpp.o -c /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/main.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/frumentarii.dir/src/main.cpp.o -MF CMakeFiles/frumentarii.dir/src/main.cpp.o.d -o CMakeFiles/frumentarii.dir/src/main.cpp.o -c /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/main.cpp
 
 CMakeFiles/frumentarii.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/frumentarii.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/main.cpp > CMakeFiles/frumentarii.dir/src/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/main.cpp > CMakeFiles/frumentarii.dir/src/main.cpp.i
 
 CMakeFiles/frumentarii.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/frumentarii.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/main.cpp -o CMakeFiles/frumentarii.dir/src/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/main.cpp -o CMakeFiles/frumentarii.dir/src/main.cpp.s
 
 CMakeFiles/frumentarii.dir/src/arp.cpp.o: CMakeFiles/frumentarii.dir/flags.make
 CMakeFiles/frumentarii.dir/src/arp.cpp.o: /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/arp.cpp
 CMakeFiles/frumentarii.dir/src/arp.cpp.o: CMakeFiles/frumentarii.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dev/Desktop/C/Fing_App_Clone/Frumentarii/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/frumentarii.dir/src/arp.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/frumentarii.dir/src/arp.cpp.o -MF CMakeFiles/frumentarii.dir/src/arp.cpp.o.d -o CMakeFiles/frumentarii.dir/src/arp.cpp.o -c /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/arp.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/frumentarii.dir/src/arp.cpp.o -MF CMakeFiles/frumentarii.dir/src/arp.cpp.o.d -o CMakeFiles/frumentarii.dir/src/arp.cpp.o -c /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/arp.cpp
 
 CMakeFiles/frumentarii.dir/src/arp.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/frumentarii.dir/src/arp.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/arp.cpp > CMakeFiles/frumentarii.dir/src/arp.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/arp.cpp > CMakeFiles/frumentarii.dir/src/arp.cpp.i
 
 CMakeFiles/frumentarii.dir/src/arp.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/frumentarii.dir/src/arp.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/arp.cpp -o CMakeFiles/frumentarii.dir/src/arp.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/arp.cpp -o CMakeFiles/frumentarii.dir/src/arp.cpp.s
 
 CMakeFiles/frumentarii.dir/src/network.cpp.o: CMakeFiles/frumentarii.dir/flags.make
 CMakeFiles/frumentarii.dir/src/network.cpp.o: /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/network.cpp
 CMakeFiles/frumentarii.dir/src/network.cpp.o: CMakeFiles/frumentarii.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dev/Desktop/C/Fing_App_Clone/Frumentarii/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/frumentarii.dir/src/network.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/frumentarii.dir/src/network.cpp.o -MF CMakeFiles/frumentarii.dir/src/network.cpp.o.d -o CMakeFiles/frumentarii.dir/src/network.cpp.o -c /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/network.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/frumentarii.dir/src/network.cpp.o -MF CMakeFiles/frumentarii.dir/src/network.cpp.o.d -o CMakeFiles/frumentarii.dir/src/network.cpp.o -c /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/network.cpp
 
 CMakeFiles/frumentarii.dir/src/network.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/frumentarii.dir/src/network.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/network.cpp > CMakeFiles/frumentarii.dir/src/network.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/network.cpp > CMakeFiles/frumentarii.dir/src/network.cpp.i
 
 CMakeFiles/frumentarii.dir/src/network.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/frumentarii.dir/src/network.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/network.cpp -o CMakeFiles/frumentarii.dir/src/network.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dev/Desktop/C/Fing_App_Clone/Frumentarii/src/network.cpp -o CMakeFiles/frumentarii.dir/src/network.cpp.s
 
 # Object files for target frumentarii
 frumentarii_OBJECTS = \
