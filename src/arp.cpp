@@ -101,6 +101,9 @@ int main(){
     std::cout << "Available devices: |\n";
     std::cout << "--------------------\n\n";
     for (int i = 0; i < interfaces.size(); i++){
+        if (interfaces[i].name == "lo"){
+            continue;
+        }
         std::cout << "Interface " << i << ": \n" << interfaces[i].name << "\n";
         for (int j = 0; j < interfaces[i].ipv4_addresses.size(); j++){
             std::cout << interfaces[i].ipv4_addresses[j] << "\n";
@@ -108,9 +111,9 @@ int main(){
         for (int j = 0; j < interfaces[i].ipv6_addresses.size(); j++){
             std::cout << interfaces[i].ipv6_addresses[j] << "\n";
         }
-        std::cout << "--------------------\n";   
+        std::cout << "--------------------\n";
+        getMacAddress(interfaces[i].name);   
     }
     std::cout << "\n\n------------------------ Debug ------------------------\n\n";
-    getMacAddress("eth0");
-}
+}    
 
